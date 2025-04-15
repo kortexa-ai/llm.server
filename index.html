@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM Model Dashboard</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        table { border-collapse: collapse; width: 100%; max-width: 1100px; }
+        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+        th { background: #f0f0f0; }
+        tr.up td { background: #e7ffe7; }
+        tr.down td { background: #ffe7e7; }
+        .status-up { color: green; font-weight: bold; }
+        .status-down { color: red; font-weight: bold; }
+        a.public-link { color: #0066cc; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>LLM Model Dashboard</h1>
+    <table id="models-table">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Model Name</th>
+                <th>Description</th>
+                <th>Backend URL</th>
+                <th>Status</th>
+                <th>Public Endpoint</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        async function fetchModels() {
+            const res = await fetch('/api/models');
+            const models = await res.json();
+            const tbody = document.querySelector('#models-table tbody');
+            tbody.innerHTML = '';
+            models.forEach(model => {
+                const tr = document.createElement('tr');
+                tr.className = model.up ? 'up' : 'down';
+                tr.innerHTML = `
+                    <td>${model.location}</td>
+                    <td>${model.model || ''}</td>
+                    <td>${model.description || ''}</td>
+                    <td>${model.backend_url}</td>
+                    <td><span class="status-${model.up ? 'up' : 'down'}">${model.up ? 'Up' : 'Down'}</span></td>
+                    <td>${model.public_url ? `<a class="public-link" href="${model.public_url}" target="_blank">${model.public_url}</a>` : ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        fetchModels();
+        setInterval(fetchModels, 30000); // Refresh every 30s
+    </script>
+</body>
+</html>

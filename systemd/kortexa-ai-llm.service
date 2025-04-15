@@ -2,7 +2,7 @@
 Description=kortexa.ai LLM server
 After=network.target
 
-StartLimitIntervalSec=120
+StartLimitIntervalSec=60
 StartLimitBurst=3
 
 [Service]
@@ -13,18 +13,21 @@ Group=francip
 
 WorkingDirectory=/home/francip/src/llm.service
 
-Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/home/francip/.nvm/versions/node/v23.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=NODE_ENV=production
+Environment=DATA_PATH=/home/francip/data/kortexa-ai
 
-ExecStart=/home/francip/src/llm.service/run.sh
+ExecStartPre=/home/francip/.nvm/versions/node/v23.10.0/bin/npm run build
+ExecStart=/home/francip/.nvm/versions/node/v23.10.0/bin/node dist/server.js
 
 Restart=always
-RestartSec=15
+RestartSec=10
 
-TimeoutStopSec=60
+TimeoutStopSec=20
 
 ProtectSystem=full
 ProtectHome=read-only
-ReadWritePaths=/home/francip/src/llm.service /home/francip/.cache /home/francip/.config /home/francip/data/llm.service
+ReadWritePaths=/home/francip/src/llm.service /home/francip/.cache /home/francip/.config /home/francip/data/kortexa-ai
 NoNewPrivileges=true
 PrivateTmp=true
 

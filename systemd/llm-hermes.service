@@ -1,0 +1,32 @@
+[Unit]
+Description=Hermes LLM
+After=network.target
+
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+
+User=francip
+Group=francip
+
+WorkingDirectory=/home/francip/src/llm.service
+
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/home/francip/src/llm.service/models/hermes.sh
+
+Restart=always
+RestartSec=15
+
+TimeoutStopSec=60
+
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/home/francip/src/llm.service /home/francip/.cache /home/francip/.config /home/francip/data/kortexa-ai/llm
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
