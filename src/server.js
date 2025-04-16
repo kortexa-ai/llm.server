@@ -4,8 +4,9 @@ const path = require('path');
 const net = require('net');
 
 const app = express();
-const PORT = 8080;
-const NGINX_CONFIG_PATH = path.join(__dirname, '../nginx/config');
+const PORT = 3001;
+// const NGINX_CONFIG_PATH = path.join(__dirname, '../nginx/llm.kortexa.ai');
+const NGINX_CONFIG_PATH = '/etc/nginx/sites-available/llm.kortexa.ai';
 
 function parseNginxConfig() {
     const content = fs.readFileSync(NGINX_CONFIG_PATH, 'utf8');

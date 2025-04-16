@@ -6,6 +6,9 @@ dist-ssr/
 build/
 coverage/
 .firebase/
+.venv/
+venv/
+env/
 .env
 .env.*
 !.env.example
@@ -13,9 +16,6 @@ coverage/
 *.db
 *.sqlite
 .DS_Store
-env/
-venv/
-.venv/
 
 # Firebase service account
 *service-account*.json

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SERVICE_NAME="kortexa-ai-llm"
+SERVICE_NAME="kortexa-ai-llm-hermes"
 
 echo "Stopping $SERVICE_NAME service..."
 sudo systemctl stop "$SERVICE_NAME" || true

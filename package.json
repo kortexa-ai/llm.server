@@ -1,24 +1,26 @@
 {
-  "name": "llm.service",
-  "version": "1.0.0",
-  "description": "A simple systemd and nginx configuration to run an LLM as a service using vllm.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kortexa-ai/llm.service.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/kortexa-ai/llm.service/issues"
-  },
-  "homepage": "https://github.com/kortexa-ai/llm.service#readme",
-  "dependencies": {
-    "express": "^5.1.0"
-  }
+    "name": "@kortexa-ai/llm.server",
+    "version": "0.1.0",
+    "description": "kortexa.ai LLM server",
+    "copyright": "Copyright © 2025 kortexa.ai",
+    "author": {
+        "name": "Franci Penov",
+        "email": "francip@kortexa.ai",
+        "url": "https://kortexa.ai"
+    },
+    "keywords": [],
+    "license": "MIT",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kortexa-ai/llm.server.git"
+    },
+    "type": "commonjs",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js"
+    },
+    "dependencies": {
+        "express": "^5.1.0"
+    }
 }

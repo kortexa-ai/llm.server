@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SERVICE_NAME="kortexa-ai-llm"
+SERVICE_NAME="kortexa-ai-llm-hermes"
 
 echo "Restarting $SERVICE_NAME service..."
 sudo systemctl restart $SERVICE_NAME || { echo "$SERVICE_NAME restart failed"; exit 1; }

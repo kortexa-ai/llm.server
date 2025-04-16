@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SERVICE_NAME="kortexa-ai-llm"
+SERVICE_NAME="kortexa-ai-llm-hermes"
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SERVICE_FILE="$SERVICE_NAME.service"

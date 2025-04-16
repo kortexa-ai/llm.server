@@ -11,14 +11,14 @@ Type=simple
 User=francip
 Group=francip
 
-WorkingDirectory=/home/francip/src/llm.service
+WorkingDirectory=/home/francip/src/llm.server
 
 Environment=PATH=/home/francip/.nvm/versions/node/v23.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 Environment=NODE_ENV=production
 Environment=DATA_PATH=/home/francip/data/kortexa-ai
 
-ExecStartPre=/home/francip/.nvm/versions/node/v23.10.0/bin/npm run build
-ExecStart=/home/francip/.nvm/versions/node/v23.10.0/bin/node dist/server.js
+# ExecStart=/home/francip/.nvm/versions/node/v23.10.0/bin/node src/server.js
+ExecStart=/home/francip/src/llm.server/run.sh
 
 Restart=always
 RestartSec=10
@@ -27,7 +27,7 @@ TimeoutStopSec=20
 
 ProtectSystem=full
 ProtectHome=read-only
-ReadWritePaths=/home/francip/src/llm.service /home/francip/.cache /home/francip/.config /home/francip/data/kortexa-ai
+ReadWritePaths=/home/francip/src/llm.server /home/francip/.cache /home/francip/.config /home/francip/data/kortexa-ai
 NoNewPrivileges=true
 PrivateTmp=true
 
