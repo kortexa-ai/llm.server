@@ -22,5 +22,8 @@
     },
     "dependencies": {
         "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "npm-check-updates": "^17.1.18"
     }
 }
