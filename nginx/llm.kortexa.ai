@@ -4,8 +4,6 @@ server {
     server_name llm.kortexa.ai;
     ssl_certificate /etc/nginx/ssl/llm.kortexa.ai_2048/fullchain.cer;
     ssl_certificate_key /etc/nginx/ssl/llm.kortexa.ai_2048/private.key;
-    root /home/francip/src/llm.service;
-    index index.html;
     client_max_body_size 10M;
     location / {
         proxy_pass http://localhost:3001;
@@ -54,6 +52,18 @@ server {
     client_max_body_size 10M;
     location / {
         rewrite ^/(.*) /hermes$1 break;
+        proxy_pass https://llm.kortexa.ai;
+    }
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name moondream.ai.unturf.com;
+    ssl_certificate /etc/nginx/ssl/moondream.ai.unturf.com_2048/fullchain.cer;
+    ssl_certificate_key /etc/nginx/ssl/moondream.ai.unturf.com_2048/private.key;
+    client_max_body_size 10M;
+    location / {
+        rewrite ^/(.*) /moondream$1 break;
         proxy_pass https://llm.kortexa.ai;
     }
 }
