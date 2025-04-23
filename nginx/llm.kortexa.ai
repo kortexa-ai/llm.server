@@ -51,7 +51,7 @@ server {
     ssl_certificate_key /etc/nginx/ssl/hermes2.ai.unturf.com_2048/private.key;
     client_max_body_size 10M;
     location / {
-        rewrite ^/(.*) /hermes$1 break;
+        rewrite ^/(.*) /hermes/$1 break;
         proxy_pass https://llm.kortexa.ai;
     }
 }
@@ -63,7 +63,7 @@ server {
     ssl_certificate_key /etc/nginx/ssl/moondream.ai.unturf.com_2048/private.key;
     client_max_body_size 10M;
     location / {
-        rewrite ^/(.*) /moondream$1 break;
+        rewrite ^/(.*) /moondream/$1 break;
         proxy_pass https://llm.kortexa.ai;
     }
 }
