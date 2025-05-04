@@ -9,7 +9,7 @@ fi
 # sudo apt install libcurl4-openssl-dev ccache
 
 cd ~/src/llama.cpp
-# Nvidida CUDA
+# Nvidia CUDA
 # cmake -B build -DGGML_CUDA=ON -DLLAMA_CURL=ON
 # Pi CPU
 # cmake -B build -DLLAMA_CURL=ON
