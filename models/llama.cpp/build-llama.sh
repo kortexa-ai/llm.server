@@ -10,11 +10,11 @@ fi
 
 cd ~/src/llama.cpp
 # Nvidida CUDA
-cmake -B build -DGGML_CUDA=ON -DLLAMA_CURL=ON
+# cmake -B build -DGGML_CUDA=ON -DLLAMA_CURL=ON
 # Pi CPU
 # cmake -B build -DLLAMA_CURL=ON
 # OSX Metal
-# cmake -B build -DGGML_METAL=ON -DLLAMA_CURL=ON
+cmake -B build -DGGML_METAL=ON -DLLAMA_CURL=ON
 cmake --build build --config Release -j 8
 
 # Ubuntu
